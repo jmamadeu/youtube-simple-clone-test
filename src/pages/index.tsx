@@ -36,7 +36,7 @@ const Home: NextPage = () => {
           />
 
           <Flex>
-            <FormControl>
+            <FormControl w={600}>
               <InputGroup>
                 <Input placeholder="search your video" />
                 <InputRightAddon>
@@ -49,18 +49,20 @@ const Home: NextPage = () => {
           <Flex gap={2}>
             <Link color="red.500">Create account</Link>
             <Text>or</Text>
-            <Link color="red.500">or Sign in</Link>
+            <Link color="red.500">Sign in</Link>
           </Flex>
         </Flex>
         <hr />
 
+
         <Grid
           h="400px"
+          mt={4}
           templateRows="repeat(1, 1fr)"
           templateColumns="repeat(3, 1fr)"
           gap={4}
         >
-          <GridItem colSpan={2} background="yellow">
+          <GridItem colSpan={2} background="blue">
             <h1>item 1</h1>
           </GridItem>
 
@@ -70,6 +72,16 @@ const Home: NextPage = () => {
         </Grid>
 
         <SimpleGrid columns={4} spacing={2} marginTop={4}>
+          <Box background="black">asd</Box>
+          <Box background="red">asd</Box>
+          <Box background="blue">asd</Box>
+          <Box background="black">asd</Box>
+
+          <Box background="red">asd</Box>
+          <Box background="black">asd</Box>
+          <Box background="yellow">asd</Box>
+          <Box background="blue">asd</Box>
+
           <Box background="black">asd</Box>
           <Box background="red">asd</Box>
           <Box background="blue">asd</Box>
