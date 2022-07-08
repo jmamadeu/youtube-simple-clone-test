@@ -1,10 +1,10 @@
 declare namespace Module {
   declare namespace Youtube {
     type VideoItem = {
-      kind: string;
-      etag: string;
+      kind?: string;
+      etag?: string;
       id: string;
-      snippet: VideoSnippet;
+      snippet?: VideoSnippet;
     };
 
     type VideoSnippet = {
@@ -32,7 +32,7 @@ declare namespace Module {
     };
 
     type VideoSnippetThumbnailOption = {
-      url: number;
+      url: string;
       width: number;
       height: number;
     };

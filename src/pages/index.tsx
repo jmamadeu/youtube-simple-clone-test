@@ -1,11 +1,8 @@
 import {
-  Box,
   Button,
   Container,
   Flex,
   FormControl,
-  Grid,
-  GridItem,
   Input,
   InputGroup,
   InputRightAddon,
@@ -16,12 +13,11 @@ import {
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { VideoPreviewCardLink } from "../components/video-preview-card-link";
 import { useApiFetchYoutubeVideos } from "../services/apis/use-api-fetch-youtube-videos";
 
 const Home: NextPage = () => {
-  const { data } = useApiFetchYoutubeVideos()
-
-  console.log(data, "aa")
+  const { data, isLoading } = useApiFetchYoutubeVideos({});
 
   return (
     <div>
@@ -32,7 +28,12 @@ const Home: NextPage = () => {
       </Head>
 
       <Container maxW="container.xl" marginTop={4}>
-        <Flex as="header" justifyContent="space-between">
+        <Flex
+          mb={4}
+          as="header"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Image
             src="/assets/youtube-svgrepo-com.svg"
             width={50}
@@ -59,43 +60,12 @@ const Home: NextPage = () => {
         </Flex>
         <hr />
 
+        {isLoading && <h1>Loading</h1>}
 
-        <Grid
-          h="400px"
-          mt={4}
-          templateRows="repeat(1, 1fr)"
-          templateColumns="repeat(3, 1fr)"
-          gap={4}
-        >
-          <GridItem colSpan={2} background="blue">
-           <iframe src={`https://www.youtube.com/embed/XhaRYxIbnSI`} width="100%" height="100%"></iframe>
-          </GridItem>
-
-          <GridItem background="red">
-            <h1>item 2</h1>
-          </GridItem>
-        </Grid>
-
-        <SimpleGrid columns={4} spacing={2} marginTop={4}>
-          <Box background="black">asd</Box>
-          <Box background="red">asd</Box>
-          <Box background="blue">asd</Box>
-          <Box background="black">asd</Box>
-
-          <Box background="red">asd</Box>
-          <Box background="black">asd</Box>
-          <Box background="yellow">asd</Box>
-          <Box background="blue">asd</Box>
-
-          <Box background="black">asd</Box>
-          <Box background="red">asd</Box>
-          <Box background="blue">asd</Box>
-          <Box background="black">asd</Box>
-
-          <Box background="red">asd</Box>
-          <Box background="black">asd</Box>
-          <Box background="yellow">asd</Box>
-          <Box background="blue">asd</Box>
+        <SimpleGrid columns={4} spacing={4} marginTop={4}>
+          {data?.items.map(({ snippet, id }) => (
+            <VideoPreviewCardLink id={id} snippet={snippet} key={id} />
+          ))}
         </SimpleGrid>
       </Container>
     </div>
