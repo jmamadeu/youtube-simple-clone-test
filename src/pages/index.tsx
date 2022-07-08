@@ -16,8 +16,13 @@ import {
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useApiFetchYoutubeVideos } from "../services/apis/use-api-fetch-youtube-videos";
 
 const Home: NextPage = () => {
+  const { data } = useApiFetchYoutubeVideos()
+
+  console.log(data, "aa")
+
   return (
     <div>
       <Head>
@@ -63,7 +68,7 @@ const Home: NextPage = () => {
           gap={4}
         >
           <GridItem colSpan={2} background="blue">
-            <h1>item 1</h1>
+           <iframe src={`https://www.youtube.com/embed/XhaRYxIbnSI`} width="100%" height="100%"></iframe>
           </GridItem>
 
           <GridItem background="red">
