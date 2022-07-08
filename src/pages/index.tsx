@@ -1,18 +1,7 @@
-import {
-  Button,
-  Container,
-  Flex,
-  FormControl,
-  Input,
-  InputGroup,
-  InputRightAddon,
-  Link,
-  SimpleGrid,
-  Text
-} from "@chakra-ui/react";
+import { Box, Container, SimpleGrid } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import { Header } from "../components/header";
 import { VideoPreviewCardLink } from "../components/video-preview-card-link";
 import { useApiFetchYoutubeVideos } from "../services/apis/use-api-fetch-youtube-videos";
 
@@ -28,36 +17,9 @@ const Home: NextPage = () => {
       </Head>
 
       <Container maxW="container.xl" marginTop={4}>
-        <Flex
-          mb={4}
-          as="header"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Image
-            src="/assets/youtube-svgrepo-com.svg"
-            width={50}
-            height={50}
-            alt="youtube logo"
-          />
-
-          <Flex>
-            <FormControl w={600}>
-              <InputGroup>
-                <Input placeholder="search your video" />
-                <InputRightAddon>
-                  <Button>Search</Button>
-                </InputRightAddon>
-              </InputGroup>
-            </FormControl>
-          </Flex>
-
-          <Flex gap={2}>
-            <Link color="red.500">Create account</Link>
-            <Text>or</Text>
-            <Link color="red.500">Sign in</Link>
-          </Flex>
-        </Flex>
+        <Box mb={4}>
+          <Header />
+        </Box>
         <hr />
 
         {isLoading && <h1>Loading</h1>}

@@ -8,7 +8,7 @@ export const VideoPreviewCardLink = ({
   id,
   snippet,
 }: VideoPreviewCardLinkProps) => (
-  <NextLink href={`/video?id=${id}`} passHref key={id}>
+  <NextLink href={`/watch?id=${id}`} passHref key={id}>
     <Link>
       <Box>
         <Image
