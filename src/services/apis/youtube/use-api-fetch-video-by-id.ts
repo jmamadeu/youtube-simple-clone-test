@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { apiInstance } from "./api";
+import { apiInstance } from "../api";
 
 type FetchVideosParamsType = {
   id: string;
@@ -7,7 +7,7 @@ type FetchVideosParamsType = {
 
 const fetchVideos = async ({ id }: FetchVideosParamsType) => {
   const videosResponse = await apiInstance.get<API.Youtube.VideoItemResponse>(
-    `/videos?id=${id}&part=snippet,contentDetails,statistics`,
+    `/videos?id=${id}&part=snippet,contentDetails,statistics&maxResults=40`,
   );
 
   return videosResponse.data;

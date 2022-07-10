@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { apiInstance } from "./api";
+import { apiInstance } from "../api";
 
 type FetchVideosParamsType = {
   chart?: "mostPopular" | "chartUnspecified";
@@ -13,7 +13,7 @@ const fetchVideos = async ({
   maxResults = 40
 }: FetchVideosParamsType) => {
   const videosResponse = await apiInstance.get<API.Youtube.VideoItemResponse>(
-    `/videos?chart=${chart}&part=${part}&maxResults=${maxResults}`,
+    `/videos?chart=${chart}&part=${part}&maxResults=${maxResults}&maxResults=40`,
   );
 
   return videosResponse.data;
