@@ -1,10 +1,16 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import { VideoPreviewCardLink } from "../components/video-preview-card-link";
-import { useApiFetchYoutubeVideos } from "../services/apis/youtube/use-api-fetch-videos";
+import { useApiSearchYoutubeVideo } from "../services/apis/youtube/use-api-search-video";
 
-const Home: NextPage = () => {
-  const { data, isLoading } = useApiFetchYoutubeVideos({});
+const SearchedVideos: NextPage = () => {
+  const router = useRouter();
+  const { q } = router.query;
+
+  const { data, isLoading } = useApiSearchYoutubeVideo({
+    queryToSearch: q as string,
+  });
 
   return (
     <>
@@ -19,4 +25,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default SearchedVideos;

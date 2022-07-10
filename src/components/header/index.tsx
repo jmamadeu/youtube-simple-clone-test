@@ -11,35 +11,58 @@ import {
 
 import Image from "next/image";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { ChangeEvent, useState } from "react";
 
-export const Header = () => (
-  <Flex as="header" justifyContent="space-between" alignItems="center">
-    <NextLink href="/" passHref>
-      <Link>
-        <Image
-          src="/assets/youtube-svgrepo-com.svg"
-          width={50}
-          height={50}
-          alt="youtube logo"
-        />
-      </Link>
-    </NextLink>
+export const Header = () => {
+  const [searchInputValue, setSearchInputValue] = useState("");
+  const { push } = useRouter();
 
-    <Flex>
-      <FormControl w={600}>
-        <InputGroup>
-          <Input placeholder="search your video" />
-          <InputRightAddon>
-            <Button>Search</Button>
-          </InputRightAddon>
-        </InputGroup>
-      </FormControl>
+  const handleInputSearchChange = ({
+    target: { value },
+  }: ChangeEvent<HTMLInputElement>) => {
+    setSearchInputValue(value);
+  };
+
+  const handleSearchButtonClick = () => {
+    if (!searchInputValue) return;
+    
+    push(`/search?q=${searchInputValue}`);
+  };
+
+  return (
+    <Flex as="header" justifyContent="space-between" alignItems="center">
+      <NextLink href="/" passHref>
+        <Link>
+          <Image
+            src="/assets/youtube-svgrepo-com.svg"
+            width={50}
+            height={50}
+            alt="youtube logo"
+          />
+        </Link>
+      </NextLink>
+
+      <Flex>
+        <FormControl w={600}>
+          <InputGroup>
+            <Input
+              value={searchInputValue}
+              onChange={handleInputSearchChange}
+              placeholder="search your video"
+            />
+            <InputRightAddon>
+              <Button onClick={handleSearchButtonClick}>Search</Button>
+            </InputRightAddon>
+          </InputGroup>
+        </FormControl>
+      </Flex>
+
+      <Flex gap={2}>
+        <Link color="red.500">Create account</Link>
+        <Text>or</Text>
+        <Link color="red.500">Sign in</Link>
+      </Flex>
     </Flex>
-
-    <Flex gap={2}>
-      <Link color="red.500">Create account</Link>
-      <Text>or</Text>
-      <Link color="red.500">Sign in</Link>
-    </Flex>
-  </Flex>
-);
+  );
+};
