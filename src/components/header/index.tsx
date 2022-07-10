@@ -14,7 +14,7 @@ import NextLink from "next/link";
 
 export const Header = () => (
   <Flex as="header" justifyContent="space-between" alignItems="center">
-    <NextLink href="/">
+    <NextLink href="/" passHref>
       <Link>
         <Image
           src="/assets/youtube-svgrepo-com.svg"

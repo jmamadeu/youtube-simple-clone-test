@@ -27,15 +27,14 @@ const Watch: NextPage = () => {
 
         <Grid
           mt={2}
-          h="400px"
-          templateRows="repeat(2, 1fr)"
+          h="500px"
+          templateRows="repeat(1, 1fr)"
           templateColumns="repeat(6, 1fr)"
           gap={4}
         >
-          <GridItem rowSpan={2} colSpan={4} bg="tomato">
+          <GridItem rowSpan={2} colSpan={6}>
             <VideoPlayer videoId={id as string} />
           </GridItem>
-          <GridItem colSpan={2} rowSpan={2} bg="tomato" />
         </Grid>
 
         {isFetching || !data?.items.length ? (
