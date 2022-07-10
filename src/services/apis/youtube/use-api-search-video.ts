@@ -5,8 +5,8 @@ type useApiSearchVideoProps = {
   queryToSearch: string;
 };
 
-const searchVideos = async (props: useApiSearchVideoProps) => {
-  const videosResponse = await apiInstance.get<API.Youtube.VideoItemResponse>(
+export const searchYoutubeVideo = async (props: useApiSearchVideoProps) => {
+  const videosResponse = await apiInstance.get<API.Youtube.SearchVideoItemResponse>(
     `/search?part=snippet&q=${props.queryToSearch}&maxResults=40`,
   );
 
@@ -14,5 +14,5 @@ const searchVideos = async (props: useApiSearchVideoProps) => {
 };
 
 export const useApiSearchYoutubeVideo = (props: useApiSearchVideoProps) => {
-  return useQuery(["videos", props.queryToSearch], () => searchVideos(props));
+  return useQuery(["videos", props.queryToSearch], () => searchYoutubeVideo(props));
 };

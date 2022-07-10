@@ -18,7 +18,11 @@ const SearchedVideos: NextPage = () => {
 
       <SimpleGrid columns={4} spacing={4} marginTop={4}>
         {data?.items.map(({ snippet, id }) => (
-          <VideoPreviewCardLink id={id} snippet={snippet} key={id} />
+          <VideoPreviewCardLink
+            id={id.videoId}
+            snippet={snippet}
+            key={`${id.videoId}-${snippet?.channelId}`}
+          />
         ))}
       </SimpleGrid>
     </>

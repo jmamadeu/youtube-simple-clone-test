@@ -7,6 +7,12 @@ declare namespace Module {
       snippet?: VideoSnippet;
     };
 
+    type VideoSearchedItem = Omit<VideoItem, "id"> & {
+      id: {
+        videoId: string
+      }
+    }
+
     type VideoSnippet = {
       publishedAt: string;
       channelId: string;

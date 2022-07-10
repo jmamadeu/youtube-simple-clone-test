@@ -1,5 +1,5 @@
-import { Box, Flex, Link, Text } from "@chakra-ui/react";
-import Image from "next/image";
+import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
+
 import NextLink from "next/link";
 
 type VideoPreviewCardLinkProps = Module.Youtube.VideoItem;
@@ -8,7 +8,7 @@ export const VideoPreviewCardLink = ({
   id,
   snippet,
 }: VideoPreviewCardLinkProps) => (
-  <NextLink href={`/watch?id=${id}`} passHref key={id}>
+  <NextLink href={`/watch?id=${id}`} passHref>
     <Link>
       <Box>
         <Image
