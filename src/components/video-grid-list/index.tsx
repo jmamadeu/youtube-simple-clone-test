@@ -7,7 +7,7 @@ type VideoGridListProps = {
 
 export const VideoGridList = ({ data }: VideoGridListProps) => {
   return (
-    <SimpleGrid columns={4} spacing={4} marginTop={4}>
+    <SimpleGrid columns={[1,2,2,4]} spacing={4} marginTop={4}>
       {data?.map(({ snippet, id }) => (
         <VideoPreviewCardLink id={id} snippet={snippet} key={id} />
       ))}

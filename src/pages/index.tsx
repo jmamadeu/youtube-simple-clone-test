@@ -10,7 +10,7 @@ const Home: NextPage = () => {
     <>
       {isLoading && <h1>Loading</h1>}
 
-      <SimpleGrid columns={4} spacing={4} marginTop={4}>
+      <SimpleGrid columns={[1, 2, 3, 4]} spacing={4} marginTop={4}>
         {data?.items.map(({ snippet, id }) => (
           <VideoPreviewCardLink id={id} snippet={snippet} key={id} />
         ))}
